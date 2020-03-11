@@ -60,13 +60,22 @@ namespace ConsoleApplication1
             var currentDirectory = Directory.GetCurrentDirectory();
             var filepath = Path.Combine(currentDirectory, filename);
 
-            XElement xCar = XElement.Load(filepath);
-            var cars = from item in xCar.Elements("Car")
-                from name in item.Elements("Name")
-                select name;
+            var xml = new XElement("Cars", carSalesBook._cars.Select(x => new XElement("Car",
+                new XElement("Make", x.Make),
+                new XElement("Sales2014", x.Sales2014),
+                new XElement("Sales2015", x.Sales2015))));
 
-                 
+            xml.Save(filepath);
 
+            //loadFromXML
+            XElement loadingElement = XElement.Load(filepath);
+            var carsLoad = from item in loadingElement.Descendants("Car")
+                select item;
+
+            foreach (var row in carsLoad)
+            {
+                Console.WriteLine(row.Element("Make").Value + ", " + row.Element("Sales2014").Value + ", " + row.Element("Sales2015").Value);
+            }
 
             Console.WriteLine(carSalesBook._cars.LastOrDefault().Make);
 
