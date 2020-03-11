@@ -1,0 +1,6 @@
+C:\Users\48603\Desktop\TSD\TSD\02-LINQ\CarStatistics\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe.config
+C:\Users\48603\Desktop\TSD\TSD\02-LINQ\CarStatistics\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
+C:\Users\48603\Desktop\TSD\TSD\02-LINQ\CarStatistics\ConsoleApplication1\bin\Debug\ConsoleApplication1.pdb
+C:\Users\48603\Desktop\TSD\TSD\02-LINQ\CarStatistics\ConsoleApplication1\obj\Debug\CarStatistics.csprojAssemblyReference.cache
+C:\Users\48603\Desktop\TSD\TSD\02-LINQ\CarStatistics\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
+C:\Users\48603\Desktop\TSD\TSD\02-LINQ\CarStatistics\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb
