@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -31,7 +32,7 @@ namespace ConsoleApplication1
 
             //least50%
             var least50 = from item in carSalesBook._cars
-                           where item.Sales2015 >= item.Sales2014 *1.5 
+                           where item.Sales2015 >= item.Sales2014 * 1.5 
                            select item;
 
             //3makesOpens
@@ -72,13 +73,35 @@ namespace ConsoleApplication1
             var carsLoad = from item in loadingElement.Descendants("Car")
                 select item;
 
+            /*
             foreach (var row in carsLoad)
             {
                 Console.WriteLine(row.Element("Make").Value + ", " + row.Element("Sales2014").Value + ", " + row.Element("Sales2015").Value);
             }
+            */
+            /*
+            List<Process> list = new List<Process>();
+            var proc1 = Process.Start("https://www.google.com");
+            list.Add(proc1);
+            Console.WriteLine(list.MemorySum());
+            */
 
-            Console.WriteLine(carSalesBook._cars.LastOrDefault().Make);
+            //leap year method
+            Func<int, bool> leapYear = x => (x % 4) == 0;
+            Console.WriteLine(leapYear(2001));
 
+            /*
+            OwnGenericCollection<String> ogc = new OwnGenericCollection<string>();
+            Console.WriteLine(ogc.IsEmpty());
+            ogc.Add("1");
+            ogc.Add("2");
+            ogc.Add("3");
+            ogc.Add("4");
+            ogc.Add("5");
+            Console.WriteLine(ogc.Get(0));
+            Console.WriteLine(ogc.Get(4));
+            Console.WriteLine(ogc.IsEmpty());
+            */
             Console.ReadLine();
 
         }
