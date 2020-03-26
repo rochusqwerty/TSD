@@ -20,9 +20,33 @@ namespace Cookbook.Controllers
         }
 
         // GET: Recipes
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string recipeDif, string searchString)
         {
-            return View(await _context.Recipe.ToListAsync());
+            // Use LINQ to get list of genres.
+            IQueryable<string> genreQuery = from m in _context.Recipe
+                orderby m.Difficulty
+                select m.Difficulty;
+
+            var recipes = from m in _context.Recipe
+                         select m;
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                recipes = recipes.Where(s => s.Name.Contains(searchString));
+            }
+
+            if (!string.IsNullOrEmpty(recipeDif))
+            {
+                recipes = recipes.Where(x => x.Difficulty == recipeDif);
+            }
+
+            var movieGenreVM = new RecipeDifViewModel()
+            {
+                Difficulties = new SelectList(await genreQuery.Distinct().ToListAsync()),
+                Recipes = await recipes.ToListAsync()
+            };
+
+            return View(movieGenreVM);
         }
 
         // GET: Recipes/Details/5
