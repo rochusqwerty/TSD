@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Cookbook.Migrations
 {
@@ -13,10 +12,13 @@ namespace Cookbook.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Title = table.Column<string>(nullable: true),
-                    ReleaseDate = table.Column<DateTime>(nullable: false),
-                    Genre = table.Column<string>(nullable: true),
-                    Price = table.Column<decimal>(nullable: false)
+                    Name = table.Column<string>(nullable: true),
+                    Time = table.Column<int>(nullable: false),
+                    Difficulty = table.Column<string>(nullable: true),
+                    NumberOfLikes = table.Column<int>(nullable: false),
+                    Ingredients = table.Column<string>(nullable: true),
+                    Process = table.Column<string>(nullable: true),
+                    TipsAndTricks = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {

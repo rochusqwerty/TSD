@@ -9,11 +9,14 @@ namespace Cookbook.Models
     public class Recipe
     {
         public int Id { get; set; }
-        public string Title { get; set; }
+        public string Name { get; set; }
 
-        [DataType(DataType.Date)]
-        public DateTime ReleaseDate { get; set; }
-        public string Genre { get; set; }
-        public decimal Price { get; set; }
+        [Display(Name = "Duration [min]")]
+        public int Time { get; set; }
+        public string Difficulty { get; set; }
+        public int NumberOfLikes { get; set; }
+        public string Ingredients { get; set; }
+        public string Process { get; set; }
+        public string TipsAndTricks { get; set; }
     }
 }

@@ -54,7 +54,7 @@ namespace Cookbook.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,ReleaseDate,Genre,Price")] Recipe recipe)
+        public async Task<IActionResult> Create([Bind("Id,Name,Time,Difficulty,NumberOfLikes,Ingredients,Process,TipsAndTricks")] Recipe recipe)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace Cookbook.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,ReleaseDate,Genre,Price")] Recipe recipe)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Time,Difficulty,NumberOfLikes,Ingredients,Process,TipsAndTricks")] Recipe recipe)
         {
             if (id != recipe.Id)
             {
