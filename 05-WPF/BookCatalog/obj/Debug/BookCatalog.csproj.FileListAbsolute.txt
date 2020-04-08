@@ -1,0 +1,15 @@
+C:\Users\48603\source\repos\BookCatalog\obj\Debug\BookCatalog.csprojAssemblyReference.cache
+C:\Users\48603\source\repos\BookCatalog\obj\Debug\MainWindow.g.cs
+C:\Users\48603\source\repos\BookCatalog\obj\Debug\App.g.cs
+C:\Users\48603\source\repos\BookCatalog\obj\Debug\BookCatalog_MarkupCompile.cache
+C:\Users\48603\source\repos\BookCatalog\obj\Debug\BookCatalog_MarkupCompile.lref
+C:\Users\48603\source\repos\BookCatalog\bin\Debug\BookCatalog.exe.config
+C:\Users\48603\source\repos\BookCatalog\bin\Debug\BookCatalog.exe
+C:\Users\48603\source\repos\BookCatalog\bin\Debug\BookCatalog.pdb
+C:\Users\48603\source\repos\BookCatalog\obj\Debug\MainWindow.baml
+C:\Users\48603\source\repos\BookCatalog\obj\Debug\BookCatalog.g.resources
+C:\Users\48603\source\repos\BookCatalog\obj\Debug\BookCatalog.Properties.Resources.resources
+C:\Users\48603\source\repos\BookCatalog\obj\Debug\BookCatalog.csproj.GenerateResource.cache
+C:\Users\48603\source\repos\BookCatalog\obj\Debug\BookCatalog.csproj.CoreCompileInputs.cache
+C:\Users\48603\source\repos\BookCatalog\obj\Debug\BookCatalog.exe
+C:\Users\48603\source\repos\BookCatalog\obj\Debug\BookCatalog.pdb
