@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -21,10 +22,17 @@ namespace BookCatalog
     /// </summary>
     public partial class MainWindow : Window
     {
+        ObservableCollection<Book> books = new ObservableCollection<Book>();
         public MainWindow()
         {
             InitializeComponent();
-            listBoxBooksList.ItemsSource = MyBookCollection.GetMyCollection();
+            //listBoxBooksList.ItemsSource = MyBookCollection.GetMyCollection();
+            //ObservableCollection<Book> books = new ObservableCollection<Book>();
+            foreach (var book in MyBookCollection.GetMyCollection())
+            {
+                books.Add(book);
+            }
+            this.DataContext = books;
         }
 
 
@@ -33,20 +41,42 @@ namespace BookCatalog
             var lbi = ((sender as ListBox).SelectedItem as Book);
             if (lbi != null)
             {
-                lId.Content = lbi.Id;
-                lTitle.Content = lbi.Title;
-                lAuthor.Content = lbi.Author;
-                lYear.Content = lbi.Year;
+                //lId.Content = lbi.Id;
+                //lTitle.Text = lbi.Title;
+                //lAuthor.Content = lbi.Author;
+                //lYear.Content = lbi.Year;
                 if (lbi.IsRead == true)
                 {
-                    chbRead.IsChecked = true;
+                    //chbRead.IsChecked = true;
                 }
                 else
                 {
-                    chbRead.IsChecked = false;
+                    //chbRead.IsChecked = false;
                 }
 
             }
         }
+
+        private void Click_Add(object sender, RoutedEventArgs e)
+        {
+            books.Add(new Book(books.Max(d => d.Id) + 1));
+        }
+
+        private void Click_Del(object sender, RoutedEventArgs e)
+        {
+            if (listBoxBooksList.SelectedIndex != null)
+            {
+                if (MessageBox.Show("Do you want to delete this book?",
+                        "Confirmation", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                {
+                    books.RemoveAt(listBoxBooksList.SelectedIndex);
+                }
+                else
+                {
+                    // Do nothing
+                }
+            }
+        }
     }
+    
 }

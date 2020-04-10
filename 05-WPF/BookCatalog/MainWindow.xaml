@@ -4,8 +4,17 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BookCatalog"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <ObjectDataProvider x:Key="dataFromEnum" MethodName="GetValues"
+                            ObjectType="{x:Type sys:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="local:BookFormat"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
@@ -23,51 +32,71 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <ListBox Name="listBoxBooksList" BorderBrush="Transparent" 
+            <ListBox Name="listBoxBooksList" 
+                     ItemsSource="{Binding}"
+                     BorderBrush="Transparent" 
                      Grid.IsSharedSizeScope="True"
                      HorizontalContentAlignment="Stretch"
                      ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                      SelectionChanged="ListBoxBooksList_OnSelectionChanged"
-                     SelectionMode="Single"
+                     SelectionMode="Single" Grid.ColumnSpan="2" Margin="0,0,396.6,40.4"
             >
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Grid Margin="4">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <TextBlock Text="{Binding Id}" FontWeight="Bold"  />
-                                <TextBlock TextWrapping="Wrap" Grid.Column="1" Text="{Binding Title }" />
-                                <TextBlock Grid.Column="2" Text="{Binding IsRead }" />
-                            </Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="{Binding Id}" FontWeight="Bold"  />
+                            <TextBlock TextWrapping="Wrap" Grid.Column="1" Text="{Binding Title, Mode = TwoWay}" />
+                            <TextBlock Grid.Column="2" Text="{Binding IsRead, Mode = TwoWay}" />
+                        </Grid>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
-            <Grid Grid.Column="1" Grid.Row="0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
-                <Label Grid.Column="0" Grid.Row="0" Content="ID"/>
-                <Label Grid.Column="1" Grid.Row="0" x:Name="lId" Content="nan" />
-                <Label Grid.Column="0" Grid.Row="1" Content="Title"/>
-                <Label Grid.Column="1" Grid.Row="1" x:Name="lTitle" Content="nan" />
-                <Label Grid.Column="0" Grid.Row="2" Content="Author"/>
-                <Label Grid.Column="1" Grid.Row="2" x:Name="lAuthor" Content="nan" />
-                <Label Grid.Column="0" Grid.Row="3" Content="Year"/>
-                <Label Grid.Column="1" Grid.Row="3" x:Name="lYear" Content="nan" />
-                <Label Grid.Column="0" Grid.Row="4" Content="is read"/>
-                <CheckBox Grid.Column="1" Grid.Row="4" x:Name="chbRead" />
-            </Grid>
+            <GroupBox Grid.Column="1" Grid.Row="0" DataContext="{Binding ElementName=listBoxBooksList, Path=SelectedItem}" Margin="0.2,0,-0.4,34.4">
+                <Grid Margin="0,0,-0.2,25">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Label Grid.Column="0" Grid.Row="0" Content="ID"/>
+                    <Label Grid.Column="1" Grid.Row="0" Content="{Binding Id}" />
+                    <Label Grid.Column="0" Grid.Row="1" Content="Title"/>
+                    <TextBox Grid.Column="1" Grid.Row="1" Text="{Binding Title}" />
+                    <Label Grid.Column="0" Grid.Row="2" Content="Author"/>
+                    <TextBox Grid.Column="1" Grid.Row="2" Text="{Binding Author}" />
+                    <Label Grid.Column="0" Grid.Row="3" Content="Year"/>
+                    <TextBox Grid.Column="1" Grid.Row="3" Text="{Binding Year}" />
+                    <Label Grid.Column="0" Grid.Row="4" Content="Is read?"/>
+                    <CheckBox Grid.Column="1" Grid.Row="4" IsChecked="{Binding IsRead}" />
+                    <Label Grid.Column="0" Grid.Row="5" Content="Format"/>
+                    <ComboBox Grid.Column="1" Grid.Row="5" ItemsSource="{Binding Source={StaticResource dataFromEnum}}" SelectedValue="{Binding Format}" />
+                </Grid>
+            </GroupBox>
+            <Button Content="Delete" Grid.Column="1" HorizontalAlignment="Left" Margin="312.2,181,0,0" VerticalAlignment="Top" Width="75" Click="Click_Del"/>
+            <Button Content="Add" HorizontalAlignment="Left" Margin="43,181,0,0" VerticalAlignment="Top" Width="75" Click="Click_Add"/>
+        </Grid>
+        <Label Content="Logo" HorizontalAlignment="Left" Margin="143,48,0,0" VerticalAlignment="Top"/>
+        <Grid Grid.Column="0" Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="86*"/>
+                <RowDefinition Height="19*"/>
+            </Grid.RowDefinitions>
+            <Label Margin="32,10,643,45" Content="Adjust the darkness:"/>
+            <Slider Margin="105,42,194,23" Maximum="40" Minimum="0" Name="_sliderZoom" Value="12" />
+            <Label Margin="657,42,91,19">Value:</Label>
+            <TextBox Margin="0,44,28,19" HorizontalAlignment="Right" Text="12" Width="47" />
         </Grid>
     </Grid>
 </Window>
