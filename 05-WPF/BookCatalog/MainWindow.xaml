@@ -14,6 +14,13 @@
                 <x:Type TypeName="local:BookFormat"/>
             </ObjectDataProvider.MethodParameters>
         </ObjectDataProvider>
+        <local:ColorConverter x:Key="colorConv" />
+        <local:FontConverter x:Key="fontConv" />
+        <!--<ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source='Styles.xaml' />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary> -->
     </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -24,7 +31,14 @@
             <RowDefinition Height="2*" />
             <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
-        <Grid Grid.Column="0" Grid.Row="1">
+        <Grid Grid.Column="0" Grid.Row="0" Name="LogoGrid">
+            <Image VerticalAlignment="Top" HorizontalAlignment="Center" Margin="10">
+                <Image.Source>
+                    <BitmapImage  UriSource="../../Images/paramedic.png" />
+                </Image.Source>
+            </Image>
+        </Grid>
+            <Grid Grid.Column="0" Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -41,9 +55,28 @@
                      SelectionChanged="ListBoxBooksList_OnSelectionChanged"
                      SelectionMode="Single" Grid.ColumnSpan="2" Margin="0,0,396.6,40.4"
             >
+                <ListBox.Template>
+                    <ControlTemplate>
+                        <DockPanel LastChildFill="True">
+                            <Grid DockPanel.Dock="Top" Height="30">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Background="#48E64B">Id</Label>
+                                <Label Grid.Column="1" Background="#48E64B">Title</Label>
+                                <Label Grid.Column="2" Background="#48E64B">Is read?</Label>
+                            </Grid>
+                            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                            <ItemsPresenter></ItemsPresenter>
+                            </ScrollViewer>
+                        </DockPanel>
+                    </ControlTemplate>
+                </ListBox.Template>
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <Grid Margin="4">
+                        <Grid Margin="4" Background="{Binding Format, Converter={StaticResource colorConv}}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
@@ -51,7 +84,7 @@
                             </Grid.ColumnDefinitions>
                             <TextBlock Text="{Binding Id}" FontWeight="Bold"  />
                             <TextBlock TextWrapping="Wrap" Grid.Column="1" Text="{Binding Title, Mode = TwoWay}" />
-                            <TextBlock Grid.Column="2" Text="{Binding IsRead, Mode = TwoWay}" />
+                            <TextBlock Grid.Column="2" Text="{Binding IsRead, Mode = TwoWay}" Foreground="{Binding IsRead, Converter={StaticResource fontConv}}" />
                         </Grid>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
@@ -87,16 +120,15 @@
             <Button Content="Delete" Grid.Column="1" HorizontalAlignment="Left" Margin="312.2,181,0,0" VerticalAlignment="Top" Width="75" Click="Click_Del"/>
             <Button Content="Add" HorizontalAlignment="Left" Margin="43,181,0,0" VerticalAlignment="Top" Width="75" Click="Click_Add"/>
         </Grid>
-        <Label Content="Logo" HorizontalAlignment="Left" Margin="143,48,0,0" VerticalAlignment="Top"/>
         <Grid Grid.Column="0" Grid.Row="2">
             <Grid.RowDefinitions>
                 <RowDefinition Height="86*"/>
                 <RowDefinition Height="19*"/>
             </Grid.RowDefinitions>
-            <Label Margin="32,10,643,45" Content="Adjust the darkness:"/>
-            <Slider Margin="105,42,194,23" Maximum="40" Minimum="0" Name="_sliderZoom" Value="12" />
+            <Label Margin="32,10,628.6,44.6" Content="Adjust the greenness:"/>
+            <Slider Margin="105,42,194,23" Minimum="0" Maximum="255" Name="sliderDarkness" Value="12" TickFrequency="1" IsSnapToTickEnabled="True" ValueChanged="Slider_OnValueChanged" />
             <Label Margin="657,42,91,19">Value:</Label>
-            <TextBox Margin="0,44,28,19" HorizontalAlignment="Right" Text="12" Width="47" />
+            <TextBox Margin="0,44,28,19" HorizontalAlignment="Right" Text="{Binding ElementName=sliderDarkness, Path=Value,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="47" />
         </Grid>
     </Grid>
 </Window>

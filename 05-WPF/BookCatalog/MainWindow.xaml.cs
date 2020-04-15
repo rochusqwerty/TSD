@@ -77,6 +77,12 @@ namespace BookCatalog
                 }
             }
         }
+
+        private void Slider_OnValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            Slider slider = (Slider) sender;
+            LogoGrid.Background = new SolidColorBrush(Color.FromArgb(120, 0, (byte) slider.Value, 0));
+        }
     }
     
 }
