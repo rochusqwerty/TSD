@@ -1,0 +1,17 @@
+C:\studia\TSD\tdd\Account\obj\Debug\netstandard2.0\Account.csprojAssemblyReference.cache
+C:\studia\TSD\tdd\Account\obj\Debug\netstandard2.0\Account.AssemblyInfoInputs.cache
+C:\studia\TSD\tdd\Account\obj\Debug\netstandard2.0\Account.AssemblyInfo.cs
+C:\studia\TSD\tdd\Account\bin\Debug\netstandard2.0\Account.deps.json
+C:\studia\TSD\tdd\Account\bin\Debug\netstandard2.0\Account.dll
+C:\studia\TSD\tdd\Account\bin\Debug\netstandard2.0\Account.pdb
+C:\studia\TSD\tdd\Account\obj\Debug\netstandard2.0\Account.dll
+C:\studia\TSD\tdd\Account\obj\Debug\netstandard2.0\Account.pdb
+C:\Users\48603\Desktop\TSD\TSD\NUnit\excellent\Account\obj\Debug\netstandard2.0\Account.csprojAssemblyReference.cache
+C:\Users\48603\Desktop\TSD\TSD\NUnit\excellent\Account\obj\Debug\netstandard2.0\Account.csproj.CoreCompileInputs.cache
+C:\Users\48603\Desktop\TSD\TSD\NUnit\excellent\Account\obj\Debug\netstandard2.0\Account.AssemblyInfoInputs.cache
+C:\Users\48603\Desktop\TSD\TSD\NUnit\excellent\Account\obj\Debug\netstandard2.0\Account.AssemblyInfo.cs
+C:\Users\48603\Desktop\TSD\TSD\NUnit\excellent\Account\obj\Debug\netstandard2.0\Account.dll
+C:\Users\48603\Desktop\TSD\TSD\NUnit\excellent\Account\obj\Debug\netstandard2.0\Account.pdb
+C:\Users\48603\Desktop\TSD\TSD\NUnit\excellent\Account\bin\Debug\netstandard2.0\Account.deps.json
+C:\Users\48603\Desktop\TSD\TSD\NUnit\excellent\Account\bin\Debug\netstandard2.0\Account.dll
+C:\Users\48603\Desktop\TSD\TSD\NUnit\excellent\Account\bin\Debug\netstandard2.0\Account.pdb
